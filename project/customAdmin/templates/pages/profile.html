@@ -1,0 +1,165 @@
+{% extends 'pages/base.html' %}
+
+
+{% block body %}
+
+
+<style>
+
+
+input[type=text],[type=password],[type=email] {
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--bs-body-color);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: var(--bs-body-bg);
+        background-clip: padding-box;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+        border-radius: var(--bs-border-radius);
+    }
+
+    select#id_user_permissions {
+        /* Your styling properties here */
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        font-size: 14px;
+      }
+      
+      /* Style the options */
+      select#id_user_permissions option {
+        /* Your styling properties here */
+        padding: 5px;
+      }
+      
+      /* Highlight selected options */
+      select#id_user_permissions option:checked {
+        background-color: #007bff;
+        color: #fff;
+      }
+      #id_groups{
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        font-size: 14px;
+      }
+
+.py-4 {
+    margin-left: 18%;
+}
+
+@media (min-width: 1200px){
+.col-xl-4 {
+    width: 65%;
+}
+}
+@media (max-width: 1200px){
+  .py-4 {
+    margin-left: inherit !important;
+}
+}
+
+
+</style>
+
+
+
+<div class="container-fluid">
+  <div class="page-header min-height-300 border-radius-xl mt-4"
+    style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+    <span class="mask bg-gradient-primary opacity-6"></span>
+  </div>
+  <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+    <div class="row gx-4">
+      <div class="col-auto">
+        <div class="avatar avatar-xl position-relative">
+          <img src="../static/assets/img/profile.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+        </div>
+      </div>
+      <div class="col-auto my-auto">
+        <div class="h-100">
+          <h5 class="mb-1">
+            {{ username }}
+          </h5>
+          <p class="mb-0 font-weight-bold text-sm">
+            CEO / Co-Founder
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+        <div class="nav-wrapper position-relative end-0">
+          <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+          
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid py-4">
+  <div class="row">
+      
+
+
+
+
+
+
+    <div class="col-12 col-xl-4">
+      <div class="card h-100">
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-md-8 d-flex align-items-center">
+              <h6 class="mb-0">Profile Information</h6>
+            </div>
+            <div class="col-md-4 text-end">
+              <a href="javascript:;">
+                <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+                  title="Edit Profile"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="card-body p-3">
+
+          <form action="" method="post">
+            {% csrf_token %}
+
+            {% for fm in form %}
+            <div class="form-group clearfix">
+              <label class="form-label">{{ fm.label_tag }}</label>
+              <div class="form-input">
+                {{ fm }} {{ fm.errors }}
+              </div>
+            </div>
+            {% endfor %}
+
+            <div class="form-group">
+              <input class="btn bg-gradient-primary" type="submit" value="Update Now">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="{% url 'change_pass' %}" class="btn btn-danger">Change password</a>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+  
+
+
+    {% endblock body %}

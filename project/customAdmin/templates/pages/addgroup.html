@@ -1,0 +1,62 @@
+{% extends 'pages/base.html' %}
+
+
+{% block body %} 
+
+
+
+<style>
+
+    input[type=text]{
+        width: 30%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--bs-body-color);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: var(--bs-body-bg);
+        background-clip: padding-box;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+        border-radius: var(--bs-border-radius);
+    }
+    #id_permissions{
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        font-size: 14px;
+    }
+    
+    
+    </style>
+    
+    
+    
+    <div class="container my-5">
+        <h4>Create New Group</h4><br>   
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Group Name:</label>
+                {{ form.name }}
+            </div><br>
+            
+            <div class="form-group">
+                <label for="{{ form.permissions.id_for_label }}">Permissions:</label>
+                {{ form.permissions }}
+            </div><br><br>
+            
+            <div class="form-group">
+                <input class='btn btn-primary' type="submit" value='Create Group'>
+                <a href='{% url 'user_group' %}' class='btn btn-secondary'>Back</a>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock body %}

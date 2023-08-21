@@ -1,0 +1,35 @@
+{% extends 'pages/base.html' %}
+
+
+{% block body %} 
+
+<style>
+input[type=text],[type=password],[name=content_type] {
+        width: 30%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--bs-body-color);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: var(--bs-body-bg);
+        background-clip: padding-box;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+        border-radius: var(--bs-border-radius);
+        display: flex;
+    }
+
+</style>
+  <div class="container my-5">
+  <h4>Add Custom Permission</h4>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn bg-gradient-success">Add Permission</button>
+    <div class="btn btn-secondary"><a href="{% url 'permission_list' %}">Back to List</a></div>
+  </form>
+</div>
+
+  {% endblock body %}

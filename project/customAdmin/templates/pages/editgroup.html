@@ -1,0 +1,44 @@
+{% extends 'pages/base.html' %}
+
+
+    {% block body %} 
+
+
+
+<style>
+
+    #id_permissions{
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #6b7af7;
+      border-radius: 5px;
+      background-color: #fff;
+      font-size: 14px;
+    }
+      
+      </style>
+      
+  
+  
+  
+  <!-- Add this to your groupdetail.html template -->
+  <div class="container my-5">
+    <h3>Group Detail: {{ group.name }}</h3>
+    <form action="" method="post" novalidate><br>
+        {% csrf_token %}
+  
+        {% for fm in form %}
+        <div class='custom'>
+        {{ form.permissions }}<br><br>
+        </div>
+        {% endfor %}  
+  
+  
+        <input class='btn btn-primary' type="submit" value='Update Permissions'>
+        <a href='{% url 'user_group' %}' class='btn btn-secondary'>Back</a>
+    </form>
+  </div>
+  
+  
+
+    {% endblock body %}
